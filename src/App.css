@@ -1,0 +1,17 @@
+.bg-orange {
+  background-color: orange;
+}
+
+.page-footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+.fab.fa-twitter {
+  color: rgb(29, 161, 242);
+}
+
+.leaflet-container {
+  height: 200px;
+  width: 100%;
+}
