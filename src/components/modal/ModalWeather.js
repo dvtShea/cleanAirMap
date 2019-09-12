@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-let owmKey;
-
-if (process.env.NODE_ENV !== "production") {
-  owmKey = process.env.REACT_APP_OWM_KEY;
-} else {
-  owmKey = process.env.OWM_KEY;
-}
+const owmKey = process.env.REACT_APP_OWM_KEY;
 
 const ModalWeather = props => {
   const { info } = props;
@@ -19,17 +13,31 @@ const ModalWeather = props => {
   const [weather, setWeather] = useState("");
 
   useEffect(() => {
+    // memory leak cleanup
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     async function fetchData() {
       const res = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&id=524901&APPID=${owmKey}`
+        `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&id=524901&APPID=${owmKey}`,
+        { signal: signal }
       );
-      res.json().then(res => {
-        setPlaceName(res.name);
-        setTemp((res.main.temp - 273.15).toFixed(1));
-        setWeather(res.weather[0].main);
-      });
+      res
+        .json()
+        .then(res => {
+          setPlaceName(res.name);
+          setTemp((res.main.temp - 273.15).toFixed(1));
+          setWeather(res.weather[0].main);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
     fetchData();
+
+    return function cleanup() {
+      abortController.abort();
+    };
   }, [lat, lng]);
 
   return (

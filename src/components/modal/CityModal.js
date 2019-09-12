@@ -4,13 +4,7 @@ import ModalInfo from "./ModalInfo";
 import ModalMap from "./ModalMap";
 import ModalWeather from "./ModalWeather";
 
-let aqicnKey;
-
-if (process.env.NODE_ENV !== "production") {
-  aqicnKey = process.env.REACT_APP_AQICN_KEY;
-} else {
-  aqicnKey = process.env.AQICN_KEY;
-}
+const aqicnKey = process.env.REACT_APP_AQICN_KEY;
 
 const CityModal = props => {
   const { location, uid } = props;
@@ -24,16 +18,29 @@ const CityModal = props => {
   };
 
   useEffect(() => {
+    // memory leak cleanup
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     async function fetchData() {
       const res = await fetch(
-        `https://api.waqi.info/feed/@${uid}/?token=${aqicnKey}`
+        `https://api.waqi.info/feed/@${uid}/?token=${aqicnKey}`,
+        { signal: signal }
       );
-      res.json().then(res => {
-        setInfo(res.data);
-      });
+      res
+        .json()
+        .then(res => {
+          setInfo(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
     fetchData();
-  }, [modalOn]);
+    return function cleanup() {
+      abortController.abort();
+    };
+  }, [modalOn, uid]);
 
   return (
     <div>
@@ -67,7 +74,7 @@ const CityModal = props => {
         </ModalBody>
         <ModalFooter>
           <Button color="danger" onClick={toggleModal}>
-            <i class="fas fa-long-arrow-alt-left"></i> Go Back
+            <i className="fas fa-long-arrow-alt-left"></i> Go Back
           </Button>
         </ModalFooter>
       </Modal>
