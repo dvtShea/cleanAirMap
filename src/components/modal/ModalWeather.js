@@ -41,10 +41,12 @@ const ModalWeather = props => {
   }, [lat, lng]);
 
   return (
-    <div>
-      <h3>Weather for {placeName}:</h3>
-      <h4>{weather}</h4>
-      <h4>Temperature: {temp} °C</h4>
+    <div className="card">
+      <div className="card-body">
+        <h3>Weather for {placeName}:</h3>
+        <h4>{weather}</h4>
+        <h4>Temperature: {temp} °C</h4>
+      </div>
     </div>
   );
 };

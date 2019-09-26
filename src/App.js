@@ -6,10 +6,10 @@ import Footer from "./components/Footer";
 class App extends React.Component {
   render() {
     return (
-      <React.Fragment>
+      <div>
         <SearchBar />
         <Footer />
-      </React.Fragment>
+      </div>
     );
   }
 }

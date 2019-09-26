@@ -21,9 +21,10 @@ const SearchBar = () => {
   return (
     <React.Fragment>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <form className="form-inline my-2 my-lg-0 ">
+        <div className="navbar-brand mx-auto d-sm-none">cleanAirMap</div>
+        <form className="form-group my-2 col-sm-4 ">
           <input
-            className="form-control form-control-lg"
+            className="form-control input-lg"
             type="text"
             value={search}
             onChange={handleChange}
@@ -31,8 +32,8 @@ const SearchBar = () => {
             aria-label="Search"
           ></input>
         </form>
-        <div className="navbar-brand ml-auto" href="#">
-          <div className="">cleanAirMap</div>
+        <div className="navbar-brand ml-auto d-none d-sm-block">
+          cleanAirMap
         </div>
       </nav>
 

@@ -7,9 +7,6 @@ const City = props => {
 
   const [location] = useState(station);
 
-  // useEffect(() => {
-  //   console.log(station);
-  // }, [station]);
   const pollutionLevel = aqi => {
     if (aqi < 50) {
       return "bg-success";
@@ -26,17 +23,36 @@ const City = props => {
   };
 
   return (
-    <div className="card">
-      <h3 className="my-auto">{location.station.name}</h3>
-      <hr className="mt-auto" />
+    <React.Fragment>
+      {location.aqi !== "-" && (
+        <div className={`card my-3 mx-3 ${pollutionLevel(location.aqi)}`}>
+          <h2 className="card-header">{location.station.name}</h2>
+          <div className="card-body">
+            <h3 className="card-title">
+              AQI:{" "}
+              <span className={pollutionLevel(location.aqi)}>
+                {location.aqi}
+              </span>
+            </h3>
+            <p className="card-text">Station ID: {location.uid}</p>
+            <CityModal location={location.station.name} uid={location.uid} />
+          </div>
+        </div>
+      )}
+    </React.Fragment>
 
-      <h2>
-        AQI:{" "}
-        <span className={pollutionLevel(location.aqi)}>{location.aqi}</span>
-      </h2>
-      <p>Station ID: {location.uid}</p>
-      <CityModal location={location.station.name} uid={location.uid} />
-    </div>
+    // <div className="card" style={{ width: "50rem" }}>
+    //   <h3 className="my-auto">{location.station.name}</h3>
+    //   <hr className="mt-auto" />
+    //   <div className="card-body">
+    //     <h2>
+    //       AQI:{" "}
+    //       <span className={pollutionLevel(location.aqi)}>{location.aqi}</span>
+    //     </h2>
+    //     <p>Station ID: {location.uid}</p>
+    //     <CityModal location={location.station.name} uid={location.uid} />
+    //   </div>
+    // </div>
   );
 };
 

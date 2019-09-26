@@ -21,12 +21,13 @@ const Cities = props => {
 
       res
         .json()
-        .then(res => setResults(res.data.slice(0, 6)))
+        .then(res => setResults(res.data.slice(0, 8)))
         .catch(err => {
           console.log(err);
         });
     }
     fetchData();
+
     return function cleanup() {
       abortController.abort();
     };
