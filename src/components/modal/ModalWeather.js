@@ -19,7 +19,7 @@ const ModalWeather = props => {
 
     async function fetchData() {
       const res = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&id=524901&APPID=${owmKey}`,
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&id=524901&APPID=${owmKey}`,
         { signal: signal }
       );
       res
