@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import CityModal from "./modal/CityModal";
+import PropTypes from "prop-types";
 
 const City = props => {
   const { station } = props;
+
+  useEffect(() => {
+    console.log(station);
+  });
 
   const [location] = useState(station);
 
@@ -40,20 +45,24 @@ const City = props => {
         </div>
       )}
     </React.Fragment>
-
-    // <div className="card" style={{ width: "50rem" }}>
-    //   <h3 className="my-auto">{location.station.name}</h3>
-    //   <hr className="mt-auto" />
-    //   <div className="card-body">
-    //     <h2>
-    //       AQI:{" "}
-    //       <span className={pollutionLevel(location.aqi)}>{location.aqi}</span>
-    //     </h2>
-    //     <p>Station ID: {location.uid}</p>
-    //     <CityModal location={location.station.name} uid={location.uid} />
-    //   </div>
-    // </div>
   );
+};
+
+City.propTypes = {
+  station: PropTypes.shape({
+    aqi: PropTypes.string,
+    station: PropTypes.shape({
+      geo: PropTypes.arrayOf(PropTypes.number),
+      name: PropTypes.string,
+      url: PropTypes.string
+    }),
+    time: PropTypes.shape({
+      stime: PropTypes.string,
+      tz: PropTypes.string,
+      vtime: PropTypes.number
+    }),
+    uid: PropTypes.number
+  }).isRequired
 };
 
 export default City;

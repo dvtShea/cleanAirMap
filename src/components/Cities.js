@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import City from "./City";
+import aqicn from "../services/aqicn";
 
-const aqicnKey = process.env.REACT_APP_AQICN_KEY;
+//const aqicnKey = process.env.REACT_APP_AQICN_KEY;
 
 const Cities = props => {
   const { search } = props;
@@ -14,17 +15,11 @@ const Cities = props => {
     const signal = abortController.signal;
 
     async function fetchData() {
-      const res = await fetch(
-        `https://api.waqi.info/search/?token=${aqicnKey}&keyword=${search}`,
-        { signal: signal }
-      );
+      const response = await aqicn(search, signal);
 
-      res
-        .json()
-        .then(res => setResults(res.data.slice(0, 8)))
-        .catch(err => {
-          console.log(err);
-        });
+      response.json().then(res => {
+        setResults(res.data);
+      });
     }
     fetchData();
 
