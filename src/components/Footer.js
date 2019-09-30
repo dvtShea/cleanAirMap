@@ -18,9 +18,12 @@ const Footer = () => {
           <a href="https://twitter.com/dvtShea">Shea de Vries-Thomas</a>
         </div>
         <div className="footer-copyright text-center py-1">
-          <button type="button" className="btn btn-secondary btn-sm">
+          <a
+            href="https://github.com/dvtShea/cleanAirMap"
+            className="btn btn-secondary btn-sm"
+          >
             <i className="fab fa-github" /> View Source Code on Github
-          </button>
+          </a>
         </div>
       </footer>
     </div>
