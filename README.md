@@ -2,6 +2,9 @@ Air quality lookup tool with AQI data from aqicn.org and weather data from openw
 Created with React, Leaflet, Bootstrap, reactstrap modals, and FontAwesome.
 Hosted at https://cleanairmap.netlify.com.
 
+### Known Bugs/Errors
+Getting "Uncaught (in promise) DOMException" from asyncToGenerator.js line 6.
+
 ## Install
 
 To install project:
