@@ -22,11 +22,11 @@ const ModalInfo = props => {
   };
 
   return (
-    <div>
+    <div className="d-flex flex-column justify-content-between w-100 h-100">
       <h3>
         AQI: <span className={pollutionLevel(aqi)}>{aqi}</span>
       </h3>
-      <a href={link} className="btn btn-success mt-4">
+      <a href={link} className="btn btn-success mb-4">
         View more air quality data at aqicn.org
       </a>
     </div>

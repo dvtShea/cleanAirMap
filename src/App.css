@@ -1,5 +1,13 @@
 .bg-orange {
-  background-color: orange;
+  background-color: rgb(255, 151, 62);
+}
+
+.bg-purple {
+  background-color: rgb(100, 7, 150);
+}
+
+.bg-darkred {
+  background-color: rgb(128, 0, 36);
 }
 
 .page-footer {

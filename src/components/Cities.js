@@ -34,10 +34,32 @@ const Cities = props => {
   }, [search]);
 
   return (
-    <div>
+    <React.Fragment>
+      {results !== [] && (
+        <div>
+          <p className="d-sm-none px-4 mt-3 d-flex justify-content-center">
+            <a
+              href="http://aqicn.org/scale/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              What do these levels mean?
+            </a>
+          </p>
+          <p className="d-none d-sm-block px-4 mt-3">
+            <a
+              href="http://aqicn.org/scale/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              What do these levels mean?
+            </a>
+          </p>
+        </div>
+      )}
       {results !== [] &&
         results.map(item => <City key={item.uid} station={item} />)}
-    </div>
+    </React.Fragment>
   );
 };
 

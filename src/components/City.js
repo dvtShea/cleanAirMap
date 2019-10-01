@@ -17,13 +17,19 @@ const City = props => {
     if (aqi >= 100 && aqi < 150) {
       return "bg-orange";
     }
-    if (aqi >= 150) {
+    if (aqi >= 150 && aqi < 200) {
       return "bg-danger";
+    }
+    if (aqi >= 200 && aqi < 300) {
+      return "bg-purple";
+    }
+    if (aqi >= 300) {
+      return "bg-darkred";
     }
   };
 
   return (
-    <React.Fragment>
+    <React.Fragment className="aqi-scale">
       {location.aqi !== "-" && (
         <div className={`card my-3 mx-3 ${pollutionLevel(location.aqi)}`}>
           <h2 className="card-header">{location.station.name}</h2>
@@ -40,19 +46,6 @@ const City = props => {
         </div>
       )}
     </React.Fragment>
-
-    // <div className="card" style={{ width: "50rem" }}>
-    //   <h3 className="my-auto">{location.station.name}</h3>
-    //   <hr className="mt-auto" />
-    //   <div className="card-body">
-    //     <h2>
-    //       AQI:{" "}
-    //       <span className={pollutionLevel(location.aqi)}>{location.aqi}</span>
-    //     </h2>
-    //     <p>Station ID: {location.uid}</p>
-    //     <CityModal location={location.station.name} uid={location.uid} />
-    //   </div>
-    // </div>
   );
 };
 
