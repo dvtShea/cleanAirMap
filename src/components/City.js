@@ -6,10 +6,6 @@ import PropTypes from "prop-types";
 const City = props => {
   const { station } = props;
 
-  useEffect(() => {
-    console.log(station);
-  });
-
   const [location] = useState(station);
 
   const pollutionLevel = aqi => {
