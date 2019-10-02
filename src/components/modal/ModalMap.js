@@ -21,7 +21,7 @@ const ModalMap = props => {
       animate={true}
       easeLinearity={0.35}
     >
-      <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+      <TileLayer url="https://{s}.tile.osm.org/{z}/{x}/{y}.png" />
       <Marker position={[lat, lng]}>
         <Popup>{location}</Popup>
       </Marker>
