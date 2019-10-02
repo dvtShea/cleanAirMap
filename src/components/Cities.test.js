@@ -1,3 +1,5 @@
+// To be used for testing (I'll get to it later I swear)
+
 import Cities from "./Cities";
 
 jest.mock("../services/aqicn");

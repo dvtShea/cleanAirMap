@@ -54,6 +54,7 @@ const City = props => {
   );
 };
 
+// To be used for testing
 City.propTypes = {
   station: PropTypes.shape({
     aqi: PropTypes.string,

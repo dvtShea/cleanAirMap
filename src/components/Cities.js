@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import City from "./City";
 import aqicn from "../services/aqicn";
 
-//const aqicnKey = process.env.REACT_APP_AQICN_KEY;
-
 const Cities = props => {
   const { search } = props;
 
