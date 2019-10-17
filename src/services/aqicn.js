@@ -1,4 +1,3 @@
-import { fakeData } from "./__mocks__/testData";
 const aqicnKey = process.env.REACT_APP_AQICN_KEY;
 
 export default async (search, signal) => {
@@ -8,7 +7,6 @@ export default async (search, signal) => {
   );
 
   return res;
-  console.log(fakeData);
 
   // res.json().then(response => {
   //   return response.data;
