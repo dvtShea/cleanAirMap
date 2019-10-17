@@ -11,6 +11,8 @@ const SearchBar = () => {
   };
 
   useEffect(() => {
+    document.querySelector(".form-control").focus();
+
     if (search.length < 3) {
       setIsEmpty(true);
     } else if (search.length >= 3) {

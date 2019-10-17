@@ -19,13 +19,13 @@ const City = props => {
       return "bg-orange";
     }
     if (aqi >= 150 && aqi < 200) {
-      return "bg-danger";
+      return "bg-danger text-white";
     }
     if (aqi >= 200 && aqi < 300) {
-      return "bg-purple";
+      return "bg-purple text-white";
     }
     if (aqi >= 300) {
-      return "bg-darkred";
+      return "bg-darkred text-white";
     }
   };
 
