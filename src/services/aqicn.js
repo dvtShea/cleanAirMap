@@ -7,8 +7,4 @@ export default async (search, signal) => {
   );
 
   return res;
-
-  // res.json().then(response => {
-  //   return response.data;
-  // });
 };
