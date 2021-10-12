@@ -20,7 +20,7 @@ const Footer = () => {
         </div>
         <div className="footer-copyright text-center py-1">
           Created by <i className="fab fa-twitter" />{" "}
-          <a href="https://twitter.com/dvtShea">Shea de Vries-Thomas</a>
+          <a href="https://twitter.com/sheadvt">Shea de Vries-Thomas</a>
         </div>
         <div className="footer-copyright text-center py-1">
           <a
